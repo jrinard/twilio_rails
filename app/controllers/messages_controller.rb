@@ -9,10 +9,6 @@ def new
 end
 
 def create
-  @message = Message.new
-end
-
-def create
   @message = Message.new(message_params)
   if @message.save
     flash[:notice] = "Sent!"
