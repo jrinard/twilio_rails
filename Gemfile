@@ -26,6 +26,7 @@ group :development, :test do
   gem "phantomjs"
   gem "poltergeist"
   gem 'database_cleaner'
+  gem 'dotenv-rails' #for env auth
 end
 
 group :development do
