@@ -3,6 +3,7 @@ class Message < ActiveRecord::Base
 
 private
   def send_sms
+    begin
     response = RestClient::Request.new(
       :method => :post,
       :url => 'https://api.twilio.com/2010-04-01/Accounts/AC92343d189fc553f58a92f9895da8ced5/Messages.json',
@@ -12,5 +13,8 @@ private
                     :From => from,
                     :To => to}
     ).execute
+    rescue
+      throw(:abort) #helping it not crash if it fails to save
+    end
   end
 end
