@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  # gem 'pry-debugger'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'

@@ -13,8 +13,15 @@ private
                     :From => from,
                     :To => to}
     ).execute
-    rescue
+    rescue RestClient::BadRequest => error
+      message = JSON.parse(error.response)['message']
+      errors.add(:base, message)
       throw(:abort) #helping it not crash if it fails to save
     end
   end
 end
+
+# This part is an exception finding an specificly the bad request error
+# RestClient::BadRequest => error
+#   message = JSON.parse(error.response)['message']
+#   errors.add(:base, message)
